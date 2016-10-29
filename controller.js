@@ -33,16 +33,20 @@ module.exports = {
     },
 
     update_description: function(req, res) {
-      db.update_desc([req.params.id, req.body.product_desc], function(err, products) {
-        console.log(req.params.id, req.body.product_desc)
-        res.send( "Fun stuff" )
+      var id = req.params.id;
+      var desc = req.query.desc;
+      db.update_description([id, desc], function(err, products) {
+        // console.log(req.params.id, req.body.product_desc)
+        res.send( "The new description for product id " + id + " is: "  + desc + "." )
       })
     },
 
     update_price: function(req, res) {
-      db.update_price([req.params.id, req.body.product_price], function(err, products) {
-        console.log(req.params.id, req.body.product_price)
-        res.send( "Price for id " + req.params.id + " updated" )
+      var id = req.params.id;
+      var price = req.query.price;
+      db.update_price([id, price], function(err, products) {
+        console.log(id, price)
+        res.send( "The new Price for productid " + id + " is now: " + price )
       })
     }
 
