@@ -10,8 +10,9 @@ app.use(cors());
 app.listen('3001', function(){
   console.log("Successfully listening on : 3001")
 })
+var password = require('config.js')
 
-var connectionString = "postgres://postgres:Longbeach4@localhost/massive_project";
+var connectionString = password.password;
 
 var massiveinstance = massive.connectSync({connectionString : connectionString});
 
@@ -27,9 +28,3 @@ app.get('/products/:id', controller.getOne);
 app.put('/products/update/description/:id', controller.update_description);
 app.put('/products/update/price/:id', controller.update_price);
 app.delete('/products/delete/:id', controller.destroy);
-
-// controller.getAll();
-// controller.getOne();
-// controller.create();
-// controller.delete();
-// controller.update();

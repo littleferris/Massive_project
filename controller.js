@@ -36,7 +36,6 @@ module.exports = {
       var id = req.params.id;
       var desc = req.query.desc;
       db.update_description([id, desc], function(err, products) {
-        // console.log(req.params.id, req.body.product_desc)
         res.send( "The new description for product id " + id + " is: "  + desc + "." )
       })
     },
